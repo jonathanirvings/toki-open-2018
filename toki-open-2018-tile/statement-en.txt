@@ -1,0 +1,94 @@
+Tile Covering
+
+
+[Description]
+
+Mr. Dengklek has a floor with N cells numbered from 1 to N from left to right. In other words, the i-th cell (for i > 1) lies exactly to the right of the (i - 1)-th cell. The size of each cell is 1 x 1 unit. There is a tile on every cell except on M cells, which are cells numbered A_1, A_2, ..., A_M. Mr. Dengklek also has several special tiles of size 1 x K unit. Therefore, a special tile is able to cover cells numbered from (i) to (i + K - 1) for 1 ≤ i ≤ N - K + 1.
+
+Mr. Dengklek has Q questions numbered from 1 to Q. There are two integers L and R for each question. Mr. Dengklek wonders, in order to cover every cell numbered between L and R, inclusive, with tiles, what is the minimum number of special tiles that Mr. Dengklek has to use. Note that these questions are independent; placing a special tile for a question does not affect the answer for the next question.
+
+A special tile can also be placed even in these situations:
+- The special tile covers a cell that has been covered by a tile before, or
+- The special tile covers a cell that has been covered by another special tile before, or
+- The special tile covers a cell which index is not between L and R, inclusive.
+
+
+[Task]
+
+You have to implement init and getNumberOfSpecialTiles functions:
+
+- init(N, K, Q, M, A) - This function will be called by the grader exactly once before any getNumberOfSpecialTiles(L, R) calls.
+  - N: The number of cells on the floor.
+  - K: The size of each special tile.
+  - Q: The number of Mr. Dengklek's questions.
+  - M: The number of cells with missing tiles.
+  - A: A vector with size M. A[i] indicates the value of A_{i + 1}.
+- getNumberOfSpecialTiles(L, R) - This function will be called Q times by the grader, the i-th call to answer the i-th question.
+  - L: The leftmost index of the cells that Mr. Dengklek wants to cover.
+  - R: The rightmost index of the cells that Mr. Dengklek wants to cover.
+  - This function must return an int indicating the minimum number of special tiles that Mr. Dengklek has to use to cover every cell numbered between L and R, inclusive, with tiles.
+
+
+[Example]
+
+Assume N = 11, K = 3, Q = 3, M = 5, A = {3, 4, 6, 8, 9}. The grader will call init(N, K, Q, M, A) first. After that, the getNumberOfSpecialTiles(L, R) function will be called 3 times:
+
+- If given L = 1, R = 11, then getNumberOfSpecialTiles(L, R) function must return 3. A possible special tiles placement is as follows:
+  - Place a special tile covering cell 2, cell 3, and cell 4.
+  - Place a special tile covering cell 5, cell 6, and cell 7.
+  - Place a special tile covering cell 7, cell 8, and cell 9.
+  Therefore, the cells with missing tiles are covered.
+- If given L = 5, R = 5, then getNumberOfSpecialTiles(L, R) function must return 0.
+- If given L = 5, R = 6, then getNumberOfSpecialTiles(L, R) function must return 1. Note that special tiles may cover a cell which index is not between L and R, inclusive, as well.
+
+
+[Subtasks]
+
+For every subtask
+
+- 1 ≤ K ≤ N ≤ 10^9
+- 1 ≤ M ≤ min(N, 300,000)
+- 1 ≤ Q ≤ 300,000
+- 1 ≤ A_i ≤ N for every 1 ≤ i ≤ M 
+- A_i < A_{i + 1} for every 1 ≤ i < M
+- 1 ≤ L ≤ R ≤ N
+
+Subtask 1 (15 points)
+
+- 1 ≤ N ≤ 5,000
+
+Subtask 2 (14 points)
+
+- 1 ≤ M ≤ min(N, 5,000)
+
+Subtask 3 (23 points)
+
+- 1 ≤ N ≤ 300,000
+
+Subtask 4 (13 points)
+
+- K = 1
+
+Subtask 5 (13 points)
+
+- Q = 1
+
+Subtask 6 (22 points)
+
+- No additional constraint
+
+
+[Sample Grader]
+
+The provided sample grader will read the input with the following format:
+- The first row consists of four integers N, K, M, Q separated by space.
+- The second row consists of M integers separated by space. The i-th integer indicates the value of A[i - 1].
+- The next Q lines consist of two integers separated by space. The i-th line consists of the value of L and R for the i-th question, respectively.
+
+The provided sample grader will print the output with the following format:
+- The first Q lines consist of one integer. The i-th line consists of the integer returned by the i-th getNumberOfSpecialTiles function call.
+
+
+[Skeleton]
+
+You can download the skeleton for this problem here.

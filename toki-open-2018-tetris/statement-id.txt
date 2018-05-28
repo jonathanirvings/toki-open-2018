@@ -1,0 +1,99 @@
+2-Wide Tetris™
+
+
+[Deskripsi]
+
+Anda diberikan sebuah slot dengan lebar 2 sel dan tinggi tak hingga. Pada mulanya, slot tersebut kosong. Anda juga diberikan sebuah rentetan tetromino berisi N tetromino dinomori dari 1 sampai N. Setiap tetromino menempati 4 sel dan dapat dibedakan menjadi 6 huruf: O, T, J, L, S, Z. (Perhatikan bahwa tidak ada tetromino dengan panjang 4 sel alias tetromino I.) Tetromino ke-i berhuruf S_i. Anda dapat melihat tetromino dan orientasi-orientasinya pada tabel berikut.
+
+[[tetris_1.png]]
+
+Anda akan bermain salah satu varian dari permainan Tetris™ yakni 2-Wide Tetris™. Untuk setiap tetromino pada rentetan yang diberikan, Anda diminta untuk menentukan orientasinya terlebih dahulu. Setelah itu, secara berurutan, tetromino-tetromino tersebut akan dijatuhkan ke dalam slot. Ketika menjatuhkan tetromino (dengan orientasinya), hal-hal ini secara berurutan terjadi:
+1. Apabila lebar tetromino lebih dari 2 (misalnya tetromino T dengan orientasi 0), maka permainan akan berakhir dan Anda dinyatakan kalah.
+2. Tetromino akan bergerak dari atas ke bawah, sebaris demi sebaris, dan akan berhenti apabila bergerak satu baris lagi ke bawah akan menyebabkan tetromino tumpang tindih dengan dasar slot atau sel yang telah ditempati.
+3. Tetromino akan menempati sel-sel pada posisinya.
+4. Permainan akan mengecek seluruh baris secara bersamaan: apabila setiap sel pada sebuah baris ditempati, maka baris tersebut akan dibuang. Dengan kata lain, baris-baris di atasnya akan menempati satu baris di bawahnya.
+
+Anda dapat melihat diagram berikut sebagai contoh.
+
+[[tetris_2.png]]
+
+1. Ketika Anda menjatuhkan tetromino T dengan orientasi 1, ia akan menempati beberapa sel dari baris ke-1 hingga ke-3 (dari bawah) slot. Kemudian, permainan akan membuang baris ke-2 karena setiap selnya ditempati. Baris ke-3 akan turun ke baris ke-2.
+2. Selanjutnya, ketika Anda menjatuhkan tetromino S dengan orientasi 1, ia akan menempati beberapa sel dari baris ke-2 hingga baris ke-4. Permainan akan membuang baris ke-2 dan ke-3. Baris ke-4 akan turun ke baris ke-2.
+3. Selanjutnya, ketika Anda menjatuhkan tetromino J dengan orientasi 3, ia akan menempati beberapa sel dari baris ke-3 hingga baris ke-5. Permainan akan membuang baris ke-3. Perhatikan bahwa sel-sel yang ditempati pada baris ke-3 dan ke-4 tidak dijatuhkan ke baris ke-1 dan ke-2.
+4. Selanjutnya, ketika Anda menjatuhkan tetromino J dengan orientasi 1, ia akan menempati beberapa sel dari baris ke-3 hingga baris ke-5. Permainan akan membuang baris ke-3, ke-4, dan ke-5.
+5. Selanjutnya, ketika Anda menjatuhkan tetromino L dengan orientasi 3, ia akan menempati beberapa sel dari baris ke-1 hingga baris ke-3. Permainan akan membuang baris ke-1, ke-2, dan ke-3 sehingga slot menjadi kosong.
+
+Anda akan memenangkan permainan ini jika dan hanya jika slot kosong setelah penjatuhan seluruh tetromino. Dapatkah Anda menentukan cara untuk menang atau nyatakan bahwa hal tersebut tidak mungkin? Jika terdapat lebih dari satu cara untuk menang, Anda boleh mengembalikan cara yang mana saja.
+
+
+[Tugas]
+
+Anda harus mengimplementasikan fungsi arrangeTetrominoes:
+
+- arrangeTetrominoes(N, S, Q) - Fungsi ini akan dipanggil grader hanya sekali.
+  - N: Banyaknya tetromino.
+  - S: Sebuah string dengan panjang N. S[i] menyatakan nilai S_{i + 1}.
+  - Q: Jenis pertanyaan soal.
+  - Fungsi ini harus mengembalikan sebuah vector. Apabila tidak ada cara untuk memenangkan permainan, kembalikan sebuah vector kosong. Apabila ada cara untuk memenangkan permainan:
+    - Apabila Q = 0, keluarkan vector berukuran N dengan isi apa pun.
+    - Apabila Q = 1, elemen ke-i dari vector menyatakan orientasi dari tetromino ke-(i + 1) pada rentetan untuk memenangkan permainan. Jika terdapat lebih dari satu cara untuk memenangkan permainan, Anda boleh mengembalikan cara yang mana saja.
+
+
+[Contoh]
+
+Jika diberikan N = 5, S = "TSJJL", Q = 1, maka fungsi arrangeTetrominoes(N, S, Q) dapat mengembalikan {1, 1, 3, 1, 3}.
+
+Jika diberikan N = 4, S = "OOOO", Q = 1, maka fungsi arrangeTetrominoes(N, S, Q) dapat mengembalikan {0, 1, 2, 3}.
+
+Jika diberikan N = 4, S = "OOOO", Q = 0, maka fungsi arrangeTetrominoes(N, S, Q) dapat mengembalikan {219389123, 17816714, 474747, 1000944}.
+
+Jika diberikan N = 6, S = "SZSZSZ", Q = 1, maka fungsi arrangeTetrominoes(N, S, Q) harus mengembalikan {}.
+
+
+[Subsoal]
+
+Pada setiap subsoal berlaku
+
+- 1 ≤ N ≤ 200
+- 0 ≤ Q ≤ 1
+- S terdiri dari huruf-huruf pada himpunan {O, T, J, L, S, Z}
+
+Subsoal 1 (3 poin)
+
+- S terdiri dari huruf-huruf pada himpunan {O}
+
+Subsoal 2 (15 poin)
+
+- S terdiri dari huruf-huruf pada himpunan {O, J, L}
+
+Subsoal 3 (23 poin)
+
+- 1 ≤ N ≤ 18
+
+Subsoal 4 (37 poin)
+
+- Q = 0
+
+Subsoal 5 (22 poin)
+
+- Tidak ada batasan tambahan
+
+
+[Contoh Grader]
+
+Contoh grader yang diberikan akan membaca masukan dengan format sebagai berikut:
+- Baris pertama berisi dua buah bilangan bulat N dan Q.
+- Baris kedua berisi sebuah string S.
+
+Contoh grader yang diberikan akan mencetak keluaran dengan format sebagai berikut:
+- O baris, yang mana O adalah banyaknya bilangan yang dikembalikan oleh fungsi arrangeTetrominoes. Baris ke-i berisi bilangan ke-(i - 1) yang dikembalikan oleh arrangeTetrominoes.
+
+
+[Kerangka]
+
+Kerangka soal dapat Anda unduh di sini.
+
+
+[Catatan]
+
+Tetris™ didesain oleh Alexey Pajitnov dan Vladimir Pokhilko serta di-trademark oleh banyak penerbit. Tidak ada desainer maupun penerbit yang terlibat pada TOKI Open.

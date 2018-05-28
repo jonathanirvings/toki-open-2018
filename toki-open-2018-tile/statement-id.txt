@@ -1,0 +1,94 @@
+Menutup Ubin
+
+
+[Deskripsi]
+
+Pak Dengklek memiliki sebuah lantai yang terdiri dari N sel dinomori dari 1 sampai N dari kiri ke kanan. Dengan kata lain, sel ke-i (untuk i > 1) berada tepat di sebelah kanan sel ke-(i - 1). Ukuran dari setiap sel adalah 1 × 1 satuan. Terdapat sebuah ubin pada setiap sel kecuali pada M sel, yaitu sel-sel yang bernomor A_1, A_2, ..., A_M. Pak Dengklek juga memiliki beberapa ubin spesial berukuran 1 × K satuan. Karenanya, sebuah ubin spesial dapat menutup sel bernomor dari (i) sampai (i + K - 1) untuk 1 ≤ i ≤ N - K + 1.
+
+Pak Dengklek memiliki Q pertanyaan dinomori dari 1 sampai Q. Terdapat dua buah bilangan bulat L dan R untuk setiap pertanyaan. Pak Dengklek penasaran, untuk menutup seluruh sel bernomor di antara L sampai R, inklusif, menggunakan ubin, berapa banyak minimum ubin spesial yang Pak Dengklek harus gunakan. Perhatikan bahwa pertanyaan-pertanyaan ini bersifat independen; meletakkan sebuah ubin spesial untuk sebuah pertanyaan tidak memengaruhi jawaban untuk pertanyaan berikutnya.
+
+Sebuah ubin spesial tetap dapat diletakkan bahkan pada situasi-situasi berikut:
+- Ubin spesial tersebut menutup sebuah sel yang telah ditutup oleh sebuah ubin sebelumnya, atau
+- Ubin spesial tersebut menutup sebuah sel yang telah ditutup oleh ubin spesial lainnya sebelumnya, atau
+- Ubin spesial tersebut menutup sebuah sel yang bernomor tidak di antara L sampai R, inklusif.
+
+
+[Tugas]
+
+Anda harus mengimplementasikan fungsi init dan getNumberOfSpecialTiles:
+
+- init(N, K, Q, M, A) - Fungsi ini akan dipanggil grader hanya sekali sebelum pemanggilan getNumberOfSpecialTiles(L, R) apapun.
+  - N: Banyaknya sel pada lantai.
+  - K: Ukuran dari setiap ubin spesial.
+  - Q: Banyaknya pertanyaan yang dimiliki Pak Dengklek.
+  - M: Banyaknya sel yang tidak terdapat ubin.
+  - A: Sebuah vector berukuran M. A[i] menyatakan nilai A_{i + 1}.
+- getNumberOfSpecialTiles(L, R) - Fungsi ini akan dipanggil grader Q kali, pemanggilan ke-i untuk menjawab pertanyaan ke-i.
+  - L: Nomor sel paling kiri yang Pak Dengklek ingin tutup.
+  - R: Nomor sel paling kanan yang Pak Dengklek ingin tutup.
+  - Fungsi ini harus mengembalikan sebuah int yang menyatakan banyak minimum ubin spesial yang Pak Dengklek harus gunakan untuk menutup seluruh sel bernomor di antara L sampai R, inklusif, menggunakan ubin.
+
+
+[Contoh]
+
+Anggap N = 11, K = 3, Q = 3, M = 5, A = {3, 4, 6, 8, 9}. Grader akan memanggil init(N, K, Q, M, A) terlebih dahulu. Selanjutnya fungsi getNumberOfSpecialTiles(L, R) akan dipanggil 3 kali:
+
+- Jika diberikan L = 1, R = 11, maka fungsi getNumberOfSpecialTiles(L, R) harus mengembalikan 3. Sebuah peletakkan ubin spesial yang mungkin adalah sebagai berikut:
+  - Letakkan sebuah ubin spesial menutupi sel 2, sel 3, dan sel 4.
+  - Letakkan sebuah ubin spesial menutupi sel 5, sel 6, dan sel 7.
+  - Letakkan sebuah ubin spesial menutupi sel 7, sel 8, dan sel 9.
+  Sehingga, seluruh sel yang tidak terdapat ubin telah ditutup.
+- Jika diberikan L = 5, R = 5, maka fungsi getNumberOfSpecialTiles(L, R) harus mengembalikan 0.
+- Jika diberikan L = 5, R = 6, maka fungsi getNumberOfSpecialTiles(L, R) harus mengembalikan 1. Perhatikan bahwa ubin spesial juga dapat menutup sebuah sel yang bernomor tidak di antara L sampai R, inklusif.
+
+
+[Subsoal]
+
+Pada setiap subsoal berlaku
+
+- 1 ≤ K ≤ N ≤ 10^9
+- 1 ≤ M ≤ min(N, 300.000)
+- 1 ≤ Q ≤ 300.000
+- 1 ≤ A_i ≤ N untuk setiap 1 ≤ i ≤ M 
+- A_i < A_{i + 1} untuk setiap 1 ≤ i < M
+- 1 ≤ L ≤ R ≤ N
+
+Subsoal 1 (15 poin)
+
+- 1 ≤ N ≤ 5.000
+
+Subsoal 2 (14 poin)
+
+- 1 ≤ M ≤ min(N, 5.000)
+
+Subsoal 3 (23 poin)
+
+- 1 ≤ N ≤ 300.000
+
+Subsoal 4 (13 poin)
+
+- K = 1
+
+Subsoal 5 (13 poin)
+
+- Q = 1
+
+Subsoal 6 (22 poin)
+
+- Tidak ada batasan tambahan
+
+
+[Contoh Grader]
+
+Contoh grader yang diberikan akan membaca masukan dengan format sebagai berikut:
+- Baris pertama berisi empat buah bilangan bulat N, K, M dan Q dipisahkan oleh spasi.
+- Baris kedua berisi M buah bilangan bulat yang dipisahkan oleh spasi. Bilangan bulat ke-i menyatakan nilai dari A[i - 1].
+- Q baris berikutnya berisi dua buah bilangan bulat yang dipisahkan oleh spasi. Baris ke-i berisi nilai dari L dan R untuk pertanyaan ke-i, secara berurutan.
+
+Contoh grader yang diberikan akan mencetak keluaran dengan format sebagai berikut:
+- Q baris pertama berisi sebuah bilangan bulat. Baris ke-i menyatakan bilangan bulat yang dikembalikan oleh pemanggilan fungsi getNumberOfSpecialTiles ke-i.
+
+
+[Kerangka]
+
+Kerangka soal dapat Anda unduh di sini.

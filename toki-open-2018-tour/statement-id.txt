@@ -1,0 +1,73 @@
+Perjalanan Petak
+
+
+[Deskripsi]
+
+Terdapat sebuah grid yang terdiri dari N baris dan N kolom, sehingga terdapat N × N petak. Baris-baris pada grid ini diberi nomor dari 1 (baris paling atas) sampai N (baris paling bawah). Kolom-kolom pada grid ini juga diberi nomor dari 1 (kolom paling kiri) sampai N (kolom paling kanan). Petak yang berada pada baris ke-i dan kolom ke-j dapat dinyatakan sebagai petak (i, j).
+
+Setiap petak berwarna putih atau hitam. Warna dari petak-petak pada awalnya direpresentasikan oleh vector S = {S_0, S_1, ..., S_{N - 1}}, yang mana S_0, S_1, ..., S_{N - 1} adalah string yang berisi N karakter. Karakter ke-j (0-based) dari S_i adalah '.' jika petak (i + 1, j + 1) berwarna putih, atau '*' jika petak (i + 1, j + 1) berwarna hitam.
+
+Anda ingin berjalan dari kiri atas menuju kanan bawah, atau dengan kata lain dari petak (1, 1) menuju petak (N, N). Umumnya, dalam satu langkah Anda dapat bergerak dari suatu petak ke kanan maupun ke bawah dengan jarak satu petak. Uniknya, jika Anda sekarang berada pada petak berwarna putih, Anda memiliki pilihan langkah tambahan yaitu untuk melangkah ke petak kanan bawah dengan jarak satu petak dalam satu langkah.
+
+Sebelum memulai melangkah, Anda diperbolehkan untuk mengubah susunan petak. Pada setiap operasi, Anda dapat menukar petak-petak pada dua buah kolom, atau Anda juga dapat menukar petak-petak pada dua buah baris. Anda juga diberikan kebebasan untuk melakukan sebanyak mungkin operasi, yang mana operasi penukaran dilakukan satu per satu.
+
+Tentukan berapa langkah minimum yang perlu Anda lakukan untuk pergi dari petak (1, 1) ke petak (N, N) setelah mengubah susunan petak yang paling optimum.
+
+
+[Tugas]
+
+Anda harus mengimplementasikan fungsi getShortestTour:
+
+- getShortestTour(N, S) - Fungsi ini akan dipanggil grader hanya sekali.
+  - N: Ukuran grid.
+  - S: Sebuah vector berukuran N. S[i] menyatakan nilai S_i.
+  - Fungsi ini harus mengembalikan sebuah int yang menyatakan banyaknya langkah minimum yang perlu Anda lakukan untuk pergi dari petak (1, 1) ke petak (N, N) setelah mengubah susunan petak yang paling optimum.
+
+
+[Contoh]
+
+Jika diberikan N = 3, S = {"**.", ".*.", "..*"}, maka Anda dapat menukar kolom pertama dengan kolom ketiga, diikuti dengan menukar baris kedua dan baris ketiga, sehingga didapatkan konfigurasi grid sebagai berikut
+**.    .**    .**
+.*. -> .*. -> *..
+..*    *..    .*.
+Dengan konfigurasi grid setelah penukaran, Anda dapat bergerak dengan langkah kanan bawah dua kali dan mencapai titik (N, N). Sehingga, fungsi getShortestTour(N, S) harus mengembalikan 2.
+
+Jika diberikan N = 3, S = {"**.", "***", "***"}, maka fungsi getShortestTour(N, S) harus mengembalikan 3.
+
+
+[Subsoal]
+
+Pada setiap subsoal berlaku
+
+- 1 ≤ N ≤ 300
+
+Subsoal 1 (13 poin)
+
+- 1 ≤ N ≤ 5
+
+Subsoal 2 (20 poin)
+
+- 1 ≤ N ≤ 8
+
+Subsoal 3 (20 poin)
+
+- 1 ≤ N ≤ 16
+
+Subsoal 4 (47 poin)
+
+- Tidak ada batasan tambahan
+
+
+[Contoh Grader]
+
+Contoh grader yang diberikan akan membaca masukan dengan format sebagai berikut:
+- Baris pertama berisi sebuah bilangan bulat N.
+- N baris berikutnya berisi sebuah string. Baris ke-i berisi S[i - 1].
+
+Contoh grader yang diberikan akan mencetak keluaran dengan format sebagai berikut:
+- Baris pertama berisi sebuah bilangan bulat yang dikembalikan oleh fungsi getShortestTour.
+
+
+[Kerangka]
+
+Kerangka soal dapat Anda unduh di sini.

@@ -1,0 +1,79 @@
+Grup Chat
+
+
+[Deskripsi]
+
+Tim teknis BitDengklek sedang kebingungan. BitDengklek adalah sebuah aplikasi yang dapat dipakai untuk melakukan pertukaran berkas antara para penggunanya. Karena BitDengklek masih sangat baru, mereka belum memikirkan secara matang sistemnya sehingga terjadi masalah kinerja dan para pengguna mulai mengeluh.
+
+Saat ini BitDengklek memiliki N pengguna yang dinomori dari 1 sampai N. Pengguna-pengguna ini secara rutin melakukan pertukaran berkas dengan satu sama lain. Dunia ini dapat diasumsikan sebagai permukaan dua dimensi. Pengguna ke-i berada di koordinat (X_i, Y_i). Jarak antara pengguna ke-i dan pengguna ke-j dihitung dengan jarak Manhattan, yaitu sebesar |X_i - X_j| + |Y_i - Y_j|. Tim BitDengklek memperhatikan bahwa waktu tunda (lamanya berkas dikirim dari si pengirim ke penerima) BitDengklek berhubungan langsung dengan jarak terjauh antara sepasang pengguna. Misalnya, pada contoh di bawah ini, jarak terjauh dicapai oleh sepasang pengguna pada posisi (1, 6) dengan (12, 5), atau (1, 6) dengan (12, 7), dengan jarak sebesar 11 + 1 = 12.
+
+[[1.png]]
+
+Untuk mengurangi waktu tunda, BitDengklek memutuskan untuk membagi para penggunanya menjadi dua grup. Setiap pengguna akan berada di tepat satu grup. Anggota grup pertama hanya dapat melakukan pertukaran berkas dengan anggota-anggota grup pertama, dan anggota grup kedua hanya dapat melakukan pertukaran berkas dengan anggota-anggota grup kedua. Banyaknya anggota pada kedua grup boleh berbeda. Salah satu grup juga mungkin saja tidak memiliki anggota sama sekali.
+
+Memang ini bukan solusi ideal, tetapi BitDengklek berharap pembagian grup ini akan mengurangi jarak terjauh antara dua pengguna yang bisa melakukan pertukaran (yaitu antara dua pengguna yang berada di grup yang sama).
+
+BitDengklek meminta Anda untuk memutuskan bagaimana cara membagi para pengguna menjadi dua grup untuk memenuhi kriteria di atas. Misalnya, Anda dapat membagi pengguna-pengguna pada contoh di atas menjadi grup merah dan grup biru seperti contoh di bawah ini. Waktu tunda dari pembagian ini adalah 8, yaitu jarak dari (1, 6) ke (9, 6), atau (4, 9) ke (9, 6), atau (4, 9) ke (6, 3). Ada lebih dari satu cara pembagian pengguna menjadi dua grup, tetapi cara-cara tersebut tidak akan menghasilkan jarak terjauh lebih kecil dari 8.
+
+[[2.png]]
+
+
+[Tugas]
+
+Anda harus mengimplementasikan fungsi getMinimumDelay:
+
+- getMinimumDelay(N, X, Y) - Fungsi ini akan dipanggil grader hanya sekali.
+  - N: Banyaknya pengguna BitDengklek.
+  - X: Sebuah vector berukuran N. X[i] menyatakan nilai X_{i + 1}.
+  - Y: Sebuah vector berukuran N. Y[i] menyatakan nilai Y_{i + 1}.
+  - Fungsi ini harus mengembalikan sebuah int yang menyatakan jarak terjauh minimum di antara dua pengguna di grup yang sama.
+
+
+[Contoh]
+
+Jika diberikan N = 8, X = {1, 4, 9, 12, 12, 9, 9, 6}, Y = {6, 9, 8, 7, 5, 4, 6, 3}, maka fungsi getMinimumDelay(N, X, Y) harus mengembalikan 8.
+
+Jika diberikan N = 5, X = {1, 1, 3, 4, 4}, Y = {2, 5, 4, 1, 2}, maka fungsi getMinimumDelay(N, X, Y) harus mengembalikan 4.
+
+
+[Subsoal]
+
+Pada setiap subsoal berlaku
+
+- 1 ≤ N ≤ 100.000
+- 1 ≤ X_i, Y_i ≤ 10^9 untuk setiap 1 ≤ i ≤ N
+
+Subsoal 1 (5 poin)
+
+- 1 ≤ N ≤ 3
+
+Subsoal 2 (12 poin)
+
+- 1 ≤ N ≤ 16
+
+Subsoal 3 (25 poin)
+
+- 1 ≤ N ≤ 2.000
+
+Subsoal 4 (15 poin)
+
+- X_i = X_j untuk setiap 1 ≤ i, j ≤ N
+
+Subsoal 5 (43 poin)
+
+- Tidak ada batasan tambahan
+
+
+[Contoh Grader]
+
+Contoh grader yang diberikan akan membaca masukan dengan format sebagai berikut:
+- Baris pertama berisi sebuah bilangan bulat N.
+- N baris berikutnya berisi dua buah bilangan bulat dipisahkan oleh spasi. Baris ke-i berisi X[i - 1] dan Y[i - 1] secara berurutan.
+
+Contoh grader yang diberikan akan mencetak keluaran dengan format sebagai berikut:
+- Baris pertama berisi sebuah bilangan bulat yang dikembalikan oleh fungsi getMinimumDelay.
+
+
+[Kerangka]
+
+Kerangka soal dapat Anda unduh di sini.

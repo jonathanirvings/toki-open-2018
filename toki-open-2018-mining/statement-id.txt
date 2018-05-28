@@ -1,0 +1,78 @@
+Menambang Emas
+
+
+[Deskripsi]
+
+Pak Dengklek sedang menambang emas di lahan pertambangan. Lahan pertambangan ini dapat kita anggap sebagai bidang 2 dimensi. Pak Dengklek tahu bahwa hanya terdapat satu emas pada lahan pertambangan ini, dan terletak pada koordinat (X, Y), yang mana X dan Y adalah bilangan bulat positif tidak lebih dari 1.000. Namun, Pak Dengklek tidak tahu secara persis nilai X dan Y.
+
+Untuk mencari emas tersebut, Pak Dengklek memiliki alat pendeteksi emas. Untuk menggunakannya, Pak Dengklek dapat pergi ke suatu koordinat (X', Y'), yang mana X' dan Y' juga adalah bilangan bulat positif tidak lebih dari 1.000, dan menekan sebuah tombol pada alat tersebut. Alat ini akan memberitahu Pak Dengklek apakah jarak dari Pak Dengklek dan emas yang dicari adalah sebuah bilangan bulat. Dengan kata lain, alat tersebut akan memberitahu apakah sqrt((X - X')^2 + (Y - Y')^2) adalah sebuah bilangan bulat.
+
+Pada akhirnya, Pak Dengklek harus memilih salah satu titik koordinat untuk digali. Bantulah Pak Dengklek agar Pak Dengklek dapat menemukan koordinat emas!
+
+
+[Tugas]
+
+Anda harus mengimplementasikan fungsi findGold():
+
+- findGold() - Fungsi ini akan dipanggil grader hanya sekali.
+
+  Fungsi ini boleh memanggil dua fungsi juri:
+
+  - isIntegerDistance(A, B) - Seluruh pemanggilan fungsi ini harus dilakukan sebelum pemanggilan fungsi answer(A, B).
+    - A: Sebuah bilangan bulat
+    - B: Sebuah bilangan bulat
+    - Fungsi ini mengembalikan sebuah bool. Jika sqrt((X - A)^2 + (Y - B)^2) adalah sebuah bilangan bulat maka fungsi ini mengembalikan true, atau false jika tidak.
+    - Jika salah satu dari A atau B bukan merupakan bilangan bulat positif tidak lebih dari 1.000, maka Anda akan mendapatkan verdict Wrong Answer.
+
+  - answer(A, B) - Fungsi ini harus dipanggil tepat sekali.
+    - A: Sebuah bilangan bulat
+    - B: Sebuah bilangan bulat
+    - Fungsi ini tidak mengembalikan apapun.
+    - Fungsi ini digunakan untuk menebak koordinat emas pada koordinat (A, B). Jika A ≠ X atau B ≠ Y, maka Anda akan mendapatkan verdict Wrong Answer.
+    - Jika fungsi ini tidak dipanggil, maka Anda juga akan mendapatkan verdict Wrong Answer.
+
+
+[Contoh]
+
+Anggap X = 2, Y = 4. Grader akan memanggil findGold().
+
+- Jika peserta menanyakan isIntegerDistance(3, 7), maka fungsi tersebut akan mengembalikan false.
+- Jika peserta menanyakan isIntegerDistance(6, 7), maka fungsi tersebut akan mengembalikan true.
+- Jika peserta menanyakan isIntegerDistance(2, 4), maka fungsi tersebut akan mengembalikan true.
+- Peserta harus memanggil answer(2, 4).
+
+
+[Subsoal]
+
+Pada setiap subsoal berlaku
+
+- 1 ≤ X, Y ≤ 1.000
+
+Subsoal 1 (100 poin)
+
+Terdapat hanya satu subsoal pada soal ini. Poin Anda untuk subsoal ini akan bergantung pada P, berapa kali fungsi isIntegerDistance() dipanggil oleh kode Anda. Karena mungkin saja terdapat lebih dari satu kasus uji pada subsoal ini, nilai P diambil sebagai yang maksimum dari semua kasus uji pada subsoal ini.
+
+Nilai P               | Poin Anda
+----------------------+-------------------------------------------------
+1.000.000 < P         | 0
+4.000 < P ≤ 1.000.000 | 15
+3.000 < P ≤ 4.000     | 50
+999 < P ≤ 3.000       | floor(100 - sqrt((P - 999) / (3000 - 999)) × 25)
+P ≤ 999               | 100
+
+
+[Contoh Grader]
+
+Contoh grader yang diberikan akan membaca masukan dengan format sebagai berikut:
+- Baris pertama berisi dua buah bilangan bulat X dan Y dipisahkan oleh spasi.
+
+
+[Kerangka]
+
+Kerangka soal dapat Anda unduh di sini.
+
+
+[Catatan]
+
+- sqrt(x) adalah fungsi yang mengembalikan akar kuadrat dari x.
+- floor(x) adalah fungsi yang mengembalikan bilangan bulat terbesar yang tidak lebih dari x.

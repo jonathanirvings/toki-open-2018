@@ -1,0 +1,78 @@
+Mining Gold
+
+
+[Description]
+
+Mr. Dengklek is mining gold on a mining area. We can assume this mining area as a 2D plane. Mr. Dengklek knows that there is exactly one gold on this mining area, and placed at the (X, Y) coordinate, where X and Y are positive integers not more than 1,000. However, Mr. Dengklek does not know the exact value of X and Y.
+
+To find the gold, Mr. Dengklek has a gold detector. To use it, Mr. Dengklek can go to a coordinate (X', Y'), where X' and Y' are also positive integers not more than 1,000, and press a button on the detector. The detector will tell Mr. Dengklek whether the distance from Mr. Dengklek and the gold is an integer. In other words, the detector will tell whether sqrt((X - X')^2 + (Y - Y')^2) is an integer.
+
+In the end, Mr. Dengklek has to choose one of the coordinates to be dug. Help Mr. Dengklek so that Mr. Dengklek can find the gold coordinate!
+
+
+[Task]
+
+You have to implement findGold() function:
+
+- findGold() - This function will be called by the grader exactly once.
+
+  This function is allowed to call two grader functions:
+
+  - isIntegerDistance(A, B) - All of the calls to this function has to be done before any answer(A, B) function call.
+    - A: An integer
+    - B: An integer
+    - This function returns a bool. If sqrt((X - A)^2 + (Y - B)^2) is an integer then this function returns true, or false otherwise.
+    - If either A or B is not a positive integer not more than 1,000, then you will get Wrong Answer verdict.
+
+  - answer(A, B) - This function must be called exactly once.
+    - A: An integer
+    - B: An integer
+    - This function does not return anything.
+    - This function is used to guess the gold coordinate on (A, B) coordinate. If A ≠ X or B ≠ Y, then you will get Wrong Answer verdict.
+    - If this function is not called, then you will get Wrong Answer verdict as well.
+
+
+[Example]
+
+Let X = 2, Y = 4. Grader will call findGold().
+
+- If the contestant queries isIntegerDistance(3, 7), then the function will return false.
+- If the contestant queries isIntegerDistance(6, 7), then the function will return true.
+- If the contestant queries isIntegerDistance(2, 4), then the function will return true.
+- The contestant must call answer(2, 4).
+
+
+[Subtasks]
+
+For every subtask
+
+- 1 ≤ X, Y ≤ 1,000
+
+Subtask 1 (100 points)
+
+There is only one subtask for this problem. Your points for this subtask will depend on P, the number of times the isIntegerDistance() function is called by your code. Since there might be more than one testcase in this subtask, the value of P is taken as the maximum of all testcases in this subtask.
+
+The value of  P       | Your points
+----------------------+-------------------------------------------------
+1,000,000 < P         | 0
+4,000 < P ≤ 1,000,000 | 15
+3,000 < P ≤ 4,000     | 50
+999 < P ≤ 3,000       | floor(100 - sqrt((P - 999) / (3000 - 999)) × 25)
+P ≤ 999               | 100
+
+
+[Sample Grader]
+
+The provided sample grader will read the input with the following format:
+- The first row consists of two integers X and Y separated by space.
+
+
+[Skeleton]
+
+You can download the skeleton for this problem here.
+
+
+[Note]
+
+- sqrt(x) is a function that returns the square root of x.
+- floor(x) is a function that returns the largest integer not more than x.

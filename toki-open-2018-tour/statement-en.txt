@@ -1,0 +1,73 @@
+Cells Tour
+
+
+[Description]
+
+There is a grid with N rows and N columns, so there are N × N cells. The rows in this grid are numbered from 1 (the topmost row) to N (the bottommost row). The columns in this grid are also numbered from 1 (the leftmost column) to N (the rightmost column). The cell on the i-th row and the j-th column can be represented as cell (i, j).
+
+Every cell is either white or black. The initial colors of the cells are represented by a vector S = {S_0, S_1, ..., S_{N - 1}}, where S_0, S_1, ..., S_{N - 1} are strings consisting of N characters. The j-th character (0-based) of S_i is '.' if cell (i + 1, j + 1) is white-colored, or '*' if cell (i + 1, j + 1) is black-colored.
+
+You want to make a tour from top-left to bottom-right, or in other words from cell (1, 1) to cell (N, N). Generally, in a single step you may move from a cell to its right or bottom adjacent cell. Particularly, if you are on a white-colored cell, you get an additional choice to move to its right-bottom adjacent cell in a single step.
+
+Before starting the tour, you may modify the grid configuration. In a single operation, you may swap the cells on two columns, or you may swap the cells on two rows. You are also given a chance to do as many operations as you want, as long as the operations are done one by one.
+
+Determine the minimum number of steps you have to perform to move from cell (1, 1) to (N, N) after optimally modifying the grid configuration.
+
+
+[Task]
+
+You have to implement getShortestTour function:
+
+- getShortestTour(N, S) - This function will be called exactly once by the grader.
+  - N: The size of the grid.
+  - S: A vector with size N. S[i] indicates the value of S_i.
+  - This function must return an int that indicates the minimum number of steps you have to perform to move from cell (1, 1) to (N, N) after you optimally modified the grid configuration.
+
+
+[Example]
+
+If given N = 3, S = {"**.", ".*.", "..*"}, then you can swap the first and the third column, followed by swapping the second and the third row, hence you get the following grid configuration
+**.    .**    .**
+.*. -> .*. -> *..
+..*    *..    .*.
+With the given grid configuration after the swaps, you can move to right-bottom twice to be on cell (N, N). Hence, getShortestTour(N, S) function must return 2.
+
+If given N = 3, S = {"**.", "***", "***"}, then getShortestTour(N, S) function must return 3.
+
+
+[Subtasks]
+
+For every subtask
+
+- 1 ≤ N ≤ 300
+
+Subtask 1 (13 points)
+
+- 1 ≤ N ≤ 5
+
+Subtask 2 (20 points)
+
+- 1 ≤ N ≤ 8
+
+Subtask 3 (20 points)
+
+- 1 ≤ N ≤ 16
+
+Subtask 4 (47 points)
+
+- No additional constraint
+
+
+[Sample Grader]
+
+The provided sample grader will read the input with the following format:
+- The first row consists of an integer N.
+- The next N lines consist of a string. The i-th row indicates the value of S[i - 1].
+
+The provided sample grader will print the output with the following format:
+- The first line consists of an integer returned by getShortestTour function.
+
+
+[Skeleton]
+
+You can download the skeleton for this problem here.
